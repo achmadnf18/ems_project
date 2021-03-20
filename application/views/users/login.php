@@ -92,8 +92,7 @@
             }
             $.post("<?php echo site_url()?>auth/login", data ).then(res => {
                 $.toast({
-                    // heading: "Failed Register",
-                    text: "<span class='my-2' style='font-size: 18px;'><b>Login success :)</b></span>", 
+                    text: "<span class='my-2' style='font-size: 14px;'><b>Login success, page will be redirect... :)</b></span>", 
                     icon: 'success',
                     showHideTransition: 'slide',
                     allowToastClose: true,
@@ -104,10 +103,11 @@
                     loader: false,
                 });
                 window.setTimeout(function(){
-                    window.location.href = '<?php echo site_url()?>manage/users'  
-                }, 5000)
+                    window.location.reload();  
+                }, 3000)
             }).fail(xhr => {
-                const res = JSON.parse(xhr.responseText);
+                console.log(xhr)
+                const res = JSON.parse(xhr.responseText || {});
                 $.toast({
                     // heading: "Failed Register",
                     text: "<span class='my-2' style='font-size: 14px;'><b>"+ res.message +"</b>", 

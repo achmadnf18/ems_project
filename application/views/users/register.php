@@ -25,9 +25,15 @@
                     <span class="focus-input100"></span>
                 </div>
     
-                <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
-                    <span class="label-input100">Username</span>
-                    <input class="input100" type="text" name="username" placeholder="Enter username">
+                <div class="wrap-input100 validate-input m-b-26" data-validate="Name is required">
+                    <span class="label-input100">Name</span>
+                    <input class="input100" type="text" name="username" placeholder="Enter name">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-26" data-validate="Address is required">
+                    <span class="label-input100">Address</span>
+                    <input class="input100" type="textarea" name="address" placeholder="Enter address">
                     <span class="focus-input100"></span>
                 </div>
 
@@ -98,6 +104,7 @@
             const data = {
                 email: $('input[name="email"]').val(),
                 username: $('input[name="username"]').val(),
+                address: $('input[name="address"]').val(),
                 password: SparkMD5.hash($('input[name="password"]').val()),
             }
             $.post("<?php echo site_url()?>auth/register", data ).then(res => {
@@ -115,7 +122,7 @@
                 });
                 window.setTimeout(function(){
                     window.location.href = '<?php echo site_url()?>account/login'  
-                }, 3000)
+                }, 2000)
             }).fail(xhr => {
                 const res = JSON.parse(xhr.responseText);
                 $.toast({

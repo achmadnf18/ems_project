@@ -15,11 +15,16 @@
   <link rel="stylesheet" href="<?php echo site_url() ?>assets/vendor/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo site_url() ?>assets/vendor/adminLTE/css/adminlte.min.css">
-
+  <link rel="stylesheet" href="<?php echo site_url() ?>assets/css/my-style.css">
+  <link rel="stylesheet" href="<?php echo site_url()?>assets/css/jquery.toast.css">
+  <link rel="stylesheet" href="<?php echo site_url()?>assets/vendor/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <link rel="stylesheet" href="<?php echo site_url()?>assets/vendor/sweetalert2/sweetalert2.min.css">
+  
   <script src="<?php echo site_url() ?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="<?php echo site_url() ?>assets/js/bootstrap.bundle.min.js"></script>
     <!-- DataTables  & Plugins -->
+    <script src="<?php echo site_url() ?>assets/vendor/moment/moment.min.js"></script>
     <script src="<?php echo site_url() ?>assets/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="<?php echo site_url() ?>assets/vendor/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="<?php echo site_url() ?>assets/vendor/datatables-responsive/js/dataTables.responsive.min.js"></script>
@@ -32,6 +37,8 @@
     <script src="<?php echo site_url() ?>assets/vendor/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="<?php echo site_url() ?>assets/vendor/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="<?php echo site_url() ?>assets/vendor/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src="<?php echo site_url() ?>assets/vendor/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="<?php echo site_url() ?>assets/vendor/sweetalert2/sweetalert2.all.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?php echo site_url() ?>assets/vendor/adminLTE/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
@@ -70,7 +77,7 @@
     </form>
 
     <!-- Right navbar links -->
-    
+    <div class="ml-auto mr-3"><a href="<?php echo site_url() ?>auth/logout">Logout</a></div>
   </nav>
   <!-- /.navbar -->
 
@@ -116,15 +123,15 @@
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-table"></i>
               <p>
-                Master Data
+                Manage
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url()?>manage/users" class="nav-link">
+                <a href="<?php echo site_url()?>admin/manage/invoice" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Users</p>
+                  <p>Invoice</p>
                 </a>
               </li>
             </ul>

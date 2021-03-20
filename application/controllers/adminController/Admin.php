@@ -6,13 +6,24 @@ class Admin extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+
+        $sess = $this->session->userdata('role_id');
+        if(empty($sess)) redirect('account/login'); 
+        if($sess != 1) redirect('dashboard');
+
         $this->load->model("users/M_Users");
         $this->load->library('form_validation');
     }
 
-	public function manageUsers()
+	public function dashboard()
 	{
 		$data['main'] = 'admin/manageUsers';
+		$this->load->view('layouts/adminTemplate', $data);
+    }
+
+    public function manageInvoice()
+	{
+		$data['main'] = 'admin/manageInvoices';
 		$this->load->view('layouts/adminTemplate', $data);
     }
     

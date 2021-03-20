@@ -53,10 +53,31 @@ $route['default_controller'] = 'home';
 $route['account/login'] = 'authController/auth/login';
 $route['account/register'] = 'authController/auth/register';
 $route['auth/login'] = 'authController/auth/doLogin';
+$route['auth/logout'] = 'authController/auth/doLogout';
 $route['auth/register'] = 'authController/auth/doRegister';
+
+$route['admin/manage/invoice'] = 'adminController/admin/manageInvoice';
+$route['admin/manage/invoice/getAllInvoices'] = 'adminController/invoice/getAllInvoices';
+$route['admin/manage/invoice/detail/(:num)'] = 'adminController/invoice/getListDetailInvoice/$1';
+$route['admin/manage/invoice/(:num)'] = 'adminController/invoice/getInvoiceById/$1';
+$route['admin/manage/invoice/update/(:num)'] = 'adminController/invoice/doUpdateInvoice/$1';
+
 $route['manage/users'] = 'adminController/admin/manageUsers';
 $route['manage/users/getAllUsers'] = 'adminController/admin/getAllUsers';
 $route['manage/users/(:num)'] = 'adminController/admin/getUserById/$1';
 $route['manage/users/update/(:num)'] = 'adminController/admin/doUpdate/$1';
+
+$route['vendor/manage/invoice'] = 'vendorController/vendor/manageInvoice';
+$route['vendor/manage/invoice/getAllInvoices'] = 'vendorController/invoice/getAllInvoicesByVendor';
+$route['vendor/manage/invoice/(:num)'] = 'vendorController/invoice/getInvoiceById/$1';
+$route['vendor/manage/invoice/detail/(:num)'] = 'vendorController/invoice/getListDetailInvoice/$1';
+$route['vendor/manage/invoice/create'] = 'vendorController/invoice/doCreateInvoice';
+$route['vendor/manage/invoice/update/(:num)'] = 'vendorController/invoice/doUpdateInvoice/$1';
+$route['vendor/manage/invoice/delete/(:num)'] = 'vendorController/invoice/doDeleteInvoice/$1';
+$route['vendor/manage/invoice/confirm/(:num)'] = 'vendorController/invoice/doConfirmInvoice/$1';
+$route['vendor/manage/invoice/detail/create'] = 'vendorController/invoice/doCreateDetailInvoice';
+$route['vendor/manage/invoice/detail/delete/(:num)'] = 'vendorController/invoice/doDeleteDetailInvoice/$1';
+$route['vendor/manage/invoice/detail/update/(:num)'] = 'vendorController/invoice/doUpdateDetailInvoice/$1';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

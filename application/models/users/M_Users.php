@@ -3,11 +3,13 @@
 class M_Users extends CI_Model
 {
     private $_table = "users";
+    private $_tableVendor = "vendors";
 
     public $id;
     public $email;
     public $username;
     public $password;
+    public $role_id;
 
     public function rules()
     {
@@ -18,6 +20,10 @@ class M_Users extends CI_Model
 
             ['field' => 'username',
             'label' => 'username',
+            'rules' => 'required'],
+
+            ['field' => 'address',
+            'label' => 'address',
             'rules' => 'required'],
 
             ['field' => 'password',
@@ -49,6 +55,10 @@ class M_Users extends CI_Model
             ['field' => 'username',
             'label' => 'username',
             'rules' => 'required'],
+
+            ['field' => 'address',
+            'label' => 'address',
+            'rules' => 'required'],
         ];
     }
 
@@ -78,7 +88,7 @@ class M_Users extends CI_Model
 
         $isPasswordTrue = password_verify($post["password"], $resUser->row()->password);
         if(!$isPasswordTrue) return [];
-        return $resUser->result();
+        return $resUser->row();
     }
 
     public function getAll()
@@ -93,11 +103,25 @@ class M_Users extends CI_Model
 
     public function save()
     {
+        $this->db->trans_start();
+
         $post = $this->input->post();
         $this->email = $post["email"];
         $this->username = $post["username"];
         $this->password = password_hash($post["password"], PASSWORD_DEFAULT);
-        return $this->db->insert($this->_table, $this);
+        $this->role_id = 2;
+        $this->db->insert($this->_table, $this);
+
+        $userID = $this->db->insert_id();
+        $dataVendor = array(
+            "id" => $userID,
+            "name" => $post["username"],
+            "code" => "VENDOR-".$userID,
+            "address" => $post["address"]
+        );
+        $this->db->insert($this->_tableVendor, $dataVendor);
+
+        $this->db->trans_complete();
     }
 
     public function update($id)
